@@ -9,13 +9,15 @@ import { LoginComponent } from './shared/login/login.component';
 import { Http, HttpModule } from '@angular/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { FilmesComponent } from './telas/filmes/filmes.component';
+import { SeriesComponent } from './telas/series/series.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FilmesComponent
+    FilmesComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,7 +26,8 @@ import { FilmesComponent } from './telas/filmes/filmes.component';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: 'Filmes', component: FilmesComponent }
+      { path: 'Filmes', component: FilmesComponent },
+      { path: 'Login', component: LoginComponent }
     ])
   ],
   providers: [],
