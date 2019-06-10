@@ -15,7 +15,7 @@ namespace Locadora.Controllers
         public string Email { get; set; }
         public string Senha { get; set; }
 
-        [HttpPost("registrar")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login()
         {
             Usuario u = new Usuario();

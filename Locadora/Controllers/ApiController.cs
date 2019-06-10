@@ -8,7 +8,7 @@ using unirest_net.http;
 
 namespace Locadora.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("apifilmes")]
     [ApiController]
     public class ApiController : ControllerBase
     {
