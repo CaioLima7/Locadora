@@ -16,7 +16,7 @@ namespace Locadora.Controllers
         public string Senha { get; set; }
 
         [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar()
+        public async Task<IActionResult> Login()
         {
             Usuario u = new Usuario();
             if (Email == u.Email)
