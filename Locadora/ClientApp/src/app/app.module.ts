@@ -10,6 +10,9 @@ import { Http, HttpModule } from '@angular/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { FilmesComponent } from './telas/filmes/filmes.component';
 import { SeriesComponent } from './telas/series/series.component';
+import { ProdutoComponent } from './telas/produto/produto.component';
+import { CheckoutComponent } from './telas/checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { SeriesComponent } from './telas/series/series.component';
     LoginComponent,
     HeaderComponent,
     FilmesComponent,
-    SeriesComponent
+    SeriesComponent,
+    ProdutoComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,7 +32,9 @@ import { SeriesComponent } from './telas/series/series.component';
     HttpModule,
     RouterModule.forRoot([
       { path: 'Filmes', component: FilmesComponent },
-      { path: 'Login', component: LoginComponent }
+      { path: 'Login', component: LoginComponent },
+      { path: 'Produto', component: ProdutoComponent },
+      { path: 'Checkout', component: CheckoutComponent }
     ])
   ],
   providers: [],

@@ -13,19 +13,19 @@ export class LoginComponent implements OnInit {
   categoryForm: FormGroup; 
 
   constructor(
-    private formBuilder: FormBuilder,
-    private http: Http
+    //private formBuilder: FormBuilder,
+    //private http: Http
   ) { }
 
   ngOnInit() {
   }
 
 
-  validarEmail() {
-    this.categoryForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.minLength(2)]]
-    });
-  }
+  //validarEmail() {
+  //  this.categoryForm = this.formBuilder.group({
+  //    email: [null, [Validators.required, Validators.minLength(2)]]
+  //  });
+  //}
 
   esqueceuSenha() {
     alert("Em desenvolvimento");
