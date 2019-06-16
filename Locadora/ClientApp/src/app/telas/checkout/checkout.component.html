@@ -26,7 +26,7 @@
 
         <div class="form-group">
           <label for="c_diff_postal_zip" class="text-black">Consultar cep<span class="text-danger">*</span></label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" [(ngModel)]="cep">
         </div>
 
         <div class="form-group row">
@@ -128,7 +128,7 @@
             </div>
 
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">
+              <button class="btn btn-primary btn-lg btn-block" (click)="buscarCep()">
                 Efetuar
                 Compra
               </button>

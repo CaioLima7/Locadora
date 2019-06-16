@@ -14,6 +14,9 @@ import { ProdutoComponent } from './telas/produto/produto.component';
 import { CheckoutComponent } from './telas/checkout/checkout.component';
 
 
+import { NgxViacepModule } from '@brunoc/ngx-viacep';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,7 @@ import { CheckoutComponent } from './telas/checkout/checkout.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    NgxViacepModule,
     RouterModule.forRoot([
       { path: 'Filmes', component: FilmesComponent },
       { path: 'Login', component: LoginComponent },
