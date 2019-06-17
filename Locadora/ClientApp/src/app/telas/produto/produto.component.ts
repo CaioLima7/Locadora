@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoComponent implements OnInit {
 
+  valor: number = 0;
+
+  aumentar() {
+    this.valor++
+  }
+  diminuir() {
+    this.valor--
+  }
+
   constructor() { }
 
   ngOnInit() {

@@ -23,8 +23,8 @@ namespace Locadora.Controllers
         //    return Ok(response);
         //}
 
-        [HttpGet()]
-        public IActionResult teste2()
+        [HttpPost()]
+        public IActionResult teste2(Array Dados)
         {
 
             return Ok();

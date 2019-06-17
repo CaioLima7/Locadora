@@ -15,6 +15,7 @@ import { CheckoutComponent } from './telas/checkout/checkout.component';
 
 
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
+import { ProcessadoComponent } from './telas/processado/processado.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NgxViacepModule } from '@brunoc/ngx-viacep';
     FilmesComponent,
     SeriesComponent,
     ProdutoComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProcessadoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
