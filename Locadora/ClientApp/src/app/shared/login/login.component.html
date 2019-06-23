@@ -1,20 +1,21 @@
 <div class="col-md-6 login-form login-container container">
-  <div class="login-logo">
-    <img src="https://cdn1.iconfinder.com/data/icons/zikons/400/----15-512.png" alt="">
-  </div>
-  <h3 class="mb-4">Acesso</h3>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Seu email" value="">
-  </div>
-  <div class="form-group">
-    <input type="password" class="form-control" placeholder="Sua senha" value="">
-  </div>
-  <div class="form-group">
-    <input type="submit" class="btnSubmit" value="Login">
-  </div>
-  <div class="form-group">
+  <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="aoEnvio(form)">
+    <div class="login-logo">
+      <img src="https://cdn1.iconfinder.com/data/icons/zikons/400/----15-512.png" alt="">
+    </div>
+    <h3 class="mb-4">Acesso</h3>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Seu email" value="" #NomeUsuario="ngModel" name="NomeUsuario" [(ngModel)]="formModel.NomeUsuario" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Sua senha" value="" #Senha="ngModel" name="Senha" [(ngModel)]="formModel.Senha" required>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btnSubmit" value="Login" [disabled]="form.invalid">
+    </div>
+    <div class="form-group">
 
-    <a class="btnForgetPwd" value="Login" (click)="esqueceuSenha()">Esqueceu sua senha?</a>
-  </div>
-
+      <a class="btnForgetPwd" value="Login" (click)="esqueceuSenha()">Esqueceu sua senha?</a>
+    </div>
+    </form>
 </div>

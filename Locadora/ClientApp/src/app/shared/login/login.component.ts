@@ -1,6 +1,8 @@
+import { UserService } from './usuario.service'
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Http } from '@angular/http';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -8,27 +10,33 @@ import { Http } from '@angular/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  formulario: FormGroup;
-  categoryForm: FormGroup; 
-
-  constructor(
-    //private formBuilder: FormBuilder,
-    //private http: Http
-  ) { }
+  formModel = {
+    NomeUsuario: '',
+    Senha: ''
+  }
+  constructor(private service: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('token') != null)
+      this.router.navigateByUrl('/Filmes');
   }
 
-
-  //validarEmail() {
-  //  this.categoryForm = this.formBuilder.group({
-  //    email: [null, [Validators.required, Validators.minLength(2)]]
-  //  });
-  //}
+  aoEnvio(form: NgForm) {
+    this.service.logar(form.value).subscribe(
+      (res: any) => {
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/Filmes');
+      },
+      err => {
+        if (err.status == 400)
+          this.toastr.error('Nome ou senha incorretos', 'Falha na autentificação.');
+        else
+          this.toastr.error("Falha ", err)
+      }
+    );
+  }
 
   esqueceuSenha() {
     alert("Em desenvolvimento");
   }
-
 }

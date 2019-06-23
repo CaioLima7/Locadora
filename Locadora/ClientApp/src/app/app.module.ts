@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,12 @@ import { CheckoutComponent } from './telas/checkout/checkout.component';
 
 import { NgxViacepModule } from '@brunoc/ngx-viacep';
 import { ProcessadoComponent } from './telas/processado/processado.component';
+import { UserService } from './shared/login/usuario.service';
+import { AuthInterceptor } from './shared/autentificacao/auth.interceptor';
+
+import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './shared/autentificacao/auth.guard';
+import { RegistroComponent } from './shared/registro/registro.component';
 
 
 @NgModule({
@@ -27,7 +33,8 @@ import { ProcessadoComponent } from './telas/processado/processado.component';
     SeriesComponent,
     ProdutoComponent,
     CheckoutComponent,
-    ProcessadoComponent
+    ProcessadoComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,14 +43,25 @@ import { ProcessadoComponent } from './telas/processado/processado.component';
     ReactiveFormsModule,
     HttpModule,
     NgxViacepModule,
+    ToastrModule.forRoot({  
+      progressBar: true
+    }),
     RouterModule.forRoot([
-      { path: 'Filmes', component: FilmesComponent },
-      { path: 'Login', component: LoginComponent },
-      { path: 'Produto', component: ProdutoComponent },
-      { path: 'Checkout', component: CheckoutComponent }
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+          { path: 'login', component: LoginComponent },
+          { path: 'registro', component: RegistroComponent },
+      { path: 'Checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+      { path: 'Filmes', component: FilmesComponent, canActivate: [AuthGuard] },
+      { path: 'Series', component: SeriesComponent, canActivate: [AuthGuard] },
+      { path: 'Produto', component: ProdutoComponent, canActivate: [AuthGuard]  },
+      { path: 'Checkout', component: CheckoutComponent, canActivate: [AuthGuard]  },
     ])
   ],
-  providers: [],
+  providers: [UserService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
