@@ -11,11 +11,11 @@
       <input type="password" class="form-control" placeholder="Sua senha" value="" #Senha="ngModel" name="Senha" [(ngModel)]="formModel.Senha" required>
     </div>
     <div class="form-group">
-      <input type="submit" class="btnSubmit" value="Login" [disabled]="form.invalid">
+      <input type="submit" class="btnSubmit" value="Logar-se" [disabled]="form.invalid">
     </div>
     <div class="form-group">
-
       <a class="btnForgetPwd" value="Login" (click)="esqueceuSenha()">Esqueceu sua senha?</a>
     </div>
+    <div class="form-group"><a class="btnForgetPwd" routerLink="/registro">Não possui cadastro?</a></div>
     </form>
 </div>

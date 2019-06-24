@@ -1,1 +1,49 @@
-<p>registro works!</p>
+  <div class="page-wrapper p-t-2 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+      <div class="card card-3">
+        <div class="card-heading"></div>
+        <div class="card-body">
+          <h2 class="title">Registro cliente</h2>
+          <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+            <div class="input-group">
+              <input class="input--style-3" type="text" placeholder="Nome Completo" name="name" formControlName="NomeCompleto">
+            </div>
+            <!--<div class="input-group">
+    <input class="input--style-3 js-datepicker" type="text" placeholder="Birthdate" name="birthday">
+    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+  </div>-->
+            <!--<div class="input-group">
+    <div class="rs-select2 js-select-simple select--no-search">
+      <select name="gender">
+        <option disabled="disabled" selected="selected">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <div class="select-dropdown"></div>
+    </div>
+  </div>-->
+            <div class="input-group">
+              <input class="input--style-3 form-control" placeholder="Nome de usuário" name="NomeUsuario" formControlName="NomeUsuario">
+            </div>
+            <div class="input-group">
+              <input class="input--style-3 form-control" type="email" placeholder="Email" formControlName="Email">
+            </div>
+            <div class="input-group">
+              <input class="input--style-3 form-control" type="password" placeholder="Senha usuário" formControlName="Senha_registro">
+            </div>
+            <!--<div class="input-group">
+              <input class="input--style-3" type="password" placeholder="Confirmação da senha" formControlName="ConfirmarSenha">
+            </div>-->
+            <!--<label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
+              Confirm
+              Password does not match.
+            </label>-->
+            <div class="p-t-10">
+              <button class="btn btn--pill btn--green" type="submit">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -12,34 +12,37 @@ export class UserService {
   readonly BaseURI = 'http://localhost:52849/api';
 
   formModel = this.fb.group({
-    UserName: ['', Validators.required],
+    NomeUsuario: ['', Validators.required],
     Email: ['', Validators.email],
-    FullName: [''],
-    Passwords: this.fb.group({
-      Password: ['', [Validators.required, Validators.minLength(4)]],
-      ConfirmPassword: ['', Validators.required]
-    }, { validator: this.comparePasswords })
-
+    NomeCompleto: [''],
+    Senha_registro: ['', [Validators.required, Validators.minLength(4)]]
+    //Senhas: this.fb.group({
+    //Senha_registro: ['', [Validators.required, Validators.minLength(4)]],
+    //ConfirmarSenha: ['', Validators.required]
   });
+  
+    //}, { validator: this.comparePasswords })
 
-  comparePasswords(fb: FormGroup) {
-    let confirmPswrdCtrl = fb.get('ConfirmPassword');
-    //passwordMismatch
-    //confirmPswrdCtrl.errors={passwordMismatch:true}
-    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
-      if (fb.get('Password').value != confirmPswrdCtrl.value)
-        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
-      else
-        confirmPswrdCtrl.setErrors(null);
-    }
-  }
+  //});
+
+  //comparePasswords(fb: FormGroup) {
+  //  let confirmPswrdCtrl = fb.get('ConfirmarSenha');
+  //  //passwordMismatch
+  //  //confirmPswrdCtrl.errors={passwordMismatch:true}
+  //  if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
+  //    if (fb.get('Senha_registro').value != confirmPswrdCtrl.value)
+  //      confirmPswrdCtrl.setErrors({ passwordMismatch: true });
+  //    else
+  //      confirmPswrdCtrl.setErrors(null);
+  //  }
+  //}
 
   registrar() {
     var body = {
-      UserName: this.formModel.value.UserName,
+      NomeUsuario: this.formModel.value.NomeUsuario,
       Email: this.formModel.value.Email,
-      FullName: this.formModel.value.FullName,
-      Password: this.formModel.value.Passwords.Password
+      NomeCompleto: this.formModel.value.NomeCompleto,
+      Senha: this.formModel.value.Senha_registro
     };
     return this.http.post(this.BaseURI + '/Acesso/Registrar', body);
   }

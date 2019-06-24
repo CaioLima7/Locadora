@@ -34,7 +34,7 @@ import { RegistroComponent } from './shared/registro/registro.component';
     ProdutoComponent,
     CheckoutComponent,
     ProcessadoComponent,
-    RegistroComponent
+    RegistroComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
