@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Locadora.Banco.Entidades;
-using Locadora.Models;
+﻿using Repositório.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Repositório.Banco.Entidades;
 
-namespace Locadora.Banco
+namespace Repositório.Banco
 {
     public class Contexto : IdentityDbContext
     {

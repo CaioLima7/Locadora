@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Locadora.Models
+namespace Repositório.Models
 {
-    public class UsuarioModel
+    public class LoginModel
     {
         public string NomeUsuario { get; set; }
-        public string Email { get; set; }
         public string Senha { get; set; }
-        public string NomeCompleto { get; set; }
-
-        public string Role { get; set; }
     }
 }

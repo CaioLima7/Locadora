@@ -29,6 +29,11 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\shared\autentificacao\" />
+    <Folder Include="Operacao\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Repositório\Repositório.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace Locadora.Banco.Entidades
+namespace Domínio.Entidades
 {
     public class ItemPedido : Entidade
     {

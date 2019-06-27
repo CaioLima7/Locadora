@@ -1,11 +1,8 @@
-﻿using Locadora.Banco.Entidades;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Repositório.Banco.Entidades;
 
-namespace Repositorio.Config
+namespace Repositório.Banco.Configuracao
 {
     class ItemPedidoConfiguration : IEntityTypeConfiguration<ItemPedido>
     {

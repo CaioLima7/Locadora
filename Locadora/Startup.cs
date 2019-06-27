@@ -1,7 +1,6 @@
 using System;
 using System.Text;
-using Locadora.Banco;
-using Locadora.Models;
+using Repositório.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Repositório.Banco;
 
 namespace Locadora
 {

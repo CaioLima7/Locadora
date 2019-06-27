@@ -1,11 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Locadora.Banco.Entidades
+namespace Domínio.Entidades
 {
-    public class Usuario
+    public class Usuario : Entidade
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -19,5 +17,9 @@ namespace Locadora.Banco.Entidades
         /// </summary>
         public virtual ICollection<Pedido> Pedidos { get; set; }
 
+        public override void Validate()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
