@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora", "Locadora\Locadora.csproj", "{FE7C6FD7-B6A3-4F7A-9D42-438DE98BB7E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositório", "Repositório\Repositório.csproj", "{F7E2AC91-99E9-4396-A3A6-07995DC353E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositorio", "Repositorio\Repositorio.csproj", "{F7E2AC91-99E9-4396-A3A6-07995DC353E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domínio", "Domínio\Domínio.csproj", "{60133E0F-988D-4A7D-8A04-9FD0C1C1F9B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{60133E0F-988D-4A7D-8A04-9FD0C1C1F9B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
