@@ -23,16 +23,14 @@ export class ProdutoComponent implements OnInit {
   constructor(private rota: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-  }
-
-  pegarQP() {
-    this.rota.queryParams.subscribe(
-      (queryParams: any) => {
-        this.parametros = queryParams;
-      })
+      this.rota.queryParams.subscribe(
+        (queryParams: any) => {
+          this.parametros = queryParams;
+        })
   }
 
   enviarQP() {
-    this.router.navigate(['/Checkout'], { queryParams: { 'Nome': 'interestelar', 'Descricao': this.valor } });
-  }
+    //this.router.navigate(['/Checkout'], { queryParams: { 'Nome': 'interestelar', 'Descricao': this.valor } });
+    this.router.navigate(['/Checkout'], { queryParams: { 'Nome': this.parametros["Nome"] , 'Descricao': this.valor } });
+  }   
 }
