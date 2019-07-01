@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Endereco, ErroCep, ErrorValues, NgxViacepService } from '@brunoc/ngx-viacep';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -26,9 +27,11 @@ export class CheckoutComponent implements OnInit {
 
   observacoes: string;
 
+  parametros: string;
+
   DadosCompra = [this.nome, this.sobrenome, this.email, this.celular, this.observacoes];
 
-  constructor(private viacep: NgxViacepService, private http: HttpClient) { }
+  constructor(private viacep: NgxViacepService, private http: HttpClient, private rota: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -54,4 +57,22 @@ export class CheckoutComponent implements OnInit {
   getPost() {
     this.http.post('/api/Api', this.DadosCompra).subscribe();
   }
+
+  pegarQP(): string {
+    this.rota.queryParams.subscribe(
+      (queryParams: any) => {
+        this.parametros = queryParams;
+      })
+    return this.parametros;
+  }
+
+  EnviarCompra() {
+    var body = {
+      "Nome": "interestelar",
+      "Descricao": "123123",
+      "Preco": 3
+    };
+    return this.http.post('http://localhost:52849/api/ObterCompra', this.pegarQP()).subscribe();
+  }
+
 }

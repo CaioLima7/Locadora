@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-produto',
@@ -16,9 +18,21 @@ export class ProdutoComponent implements OnInit {
     this.valor--
   }
 
-  constructor() { }
+  parametros: string;
+
+  constructor(private rota: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
   }
 
+  pegarQP() {
+    this.rota.queryParams.subscribe(
+      (queryParams: any) => {
+        this.parametros = queryParams;
+      })
+  }
+
+  enviarQP() {
+    this.router.navigate(['/Checkout'], { queryParams: { 'Nome': 'interestelar', 'Descricao': this.valor } });
+  }
 }
