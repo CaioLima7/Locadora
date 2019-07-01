@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Repositorio.Banco;
+using Dominio.Contratos;
+using Repositorio.Repositorios;
 
 namespace Locadora
 {
@@ -97,6 +99,8 @@ namespace Locadora
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
