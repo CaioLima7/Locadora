@@ -32,6 +32,10 @@ export class CheckoutComponent implements OnInit {
 
   preco: number;
 
+  qtd: number;
+
+  valorTotal: number;
+
   DadosCompra = [this.nome, this.sobrenome, this.email, this.celular, this.observacoes];
 
   constructor(private viacep: NgxViacepService, private http: HttpClient, private rota: ActivatedRoute, private toastr: ToastrService) { }
@@ -41,6 +45,17 @@ export class CheckoutComponent implements OnInit {
       (queryParams: any) => {
         this.parametros = queryParams;
       })
+    if (this.parametros["Nome"] == "Interestelar") {
+      this.preco = 100;
+    }
+    if (this.parametros["Nome"] == "A Cabana") {
+      this.preco = 3;
+    }
+    if (this.parametros["Nome"] == "Fragmentado") {
+      this.preco = 2;
+    }
+    this.qtd = this.parametros["Descricao"];
+    this.valorTotal = this.preco * this.qtd;
   }
 
   buscarCep(): void {

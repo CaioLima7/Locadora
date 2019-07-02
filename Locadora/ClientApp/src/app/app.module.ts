@@ -60,7 +60,7 @@ import { EstoqueComponent } from './admin/estoque/estoque.component';
       { path: 'Series', component: SeriesComponent, canActivate: [AuthGuard] },
       { path: 'Produto', component: ProdutoComponent, canActivate: [AuthGuard]  },
       { path: 'Checkout', component: CheckoutComponent, canActivate: [AuthGuard]  },
-      { path: 'Admin', component: EstoqueComponent, canActivate: [AuthGuard] }
+      { path: 'Admin', component: EstoqueComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] } }
     ])
   ],
   providers: [UserService, {

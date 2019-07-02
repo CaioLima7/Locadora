@@ -18,19 +18,40 @@ export class ProdutoComponent implements OnInit {
     this.valor--
   }
 
+  cartaz: number;
   parametros: string;
+  nomeDVD: string;
+  preco: number;
 
   constructor(private rota: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.nomeDVD = "teste";
       this.rota.queryParams.subscribe(
         (queryParams: any) => {
           this.parametros = queryParams;
         })
-  }
+    if (this.parametros["Nome"] == "Interestelar") {
+      this.cartaz = 1;
+      this.nomeDVD = "Interestelar";
+      this.preco = 100;
+    }
+    if (this.parametros["Nome"] == "A Cabana") {
+      this.cartaz = 2;
+      this.nomeDVD = "A Cabana";
+      this.preco = 80;
+    }
+    if (this.parametros["Nome"] == "Fragmentado") {
+      this.cartaz = 3;
+      this.nomeDVD = "Fragmentado";
+      this.preco = 2;
+    }
+  } 
 
   enviarQP() {
     //this.router.navigate(['/Checkout'], { queryParams: { 'Nome': 'interestelar', 'Descricao': this.valor } });
     this.router.navigate(['/Checkout'], { queryParams: { 'Nome': this.parametros["Nome"] , 'Descricao': this.valor } });
-  }   
+  }
+
+
 }

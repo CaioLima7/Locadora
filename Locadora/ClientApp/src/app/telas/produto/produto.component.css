@@ -1,3 +1,9 @@
-.cartaz {
-  background-image: url('../../../../../wwwroot/download.png');
+.cartaz1 {
+  background-image: url('https://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg');
+}
+.cartaz2 {
+  background-image: url('https://is1-ssl.mzstatic.com/image/thumb/Video127/v4/41/c4/08/41c4087c-f19f-c456-6028-c14b17af8352/2620021LGINT_PTBR.jpg/268x0w.jpg');
+}
+.cartaz3 {
+  background-image: url('https://cdn-images-1.medium.com/max/1200/1*1Ag9cMU0QigLEVdgvDbAwQ.jpeg');
 }
