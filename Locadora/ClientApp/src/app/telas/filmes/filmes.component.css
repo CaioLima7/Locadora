@@ -111,3 +111,8 @@ i {
   margin-left: 1px;
 }
 }
+
+.botao{
+  position: relative;
+  left: 37%;
+}

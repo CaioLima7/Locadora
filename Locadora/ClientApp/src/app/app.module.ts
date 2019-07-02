@@ -22,6 +22,8 @@ import { AuthInterceptor } from './shared/autentificacao/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './shared/autentificacao/auth.guard';
 import { RegistroComponent } from './shared/registro/registro.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { EstoqueComponent } from './admin/estoque/estoque.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { RegistroComponent } from './shared/registro/registro.component';
     CheckoutComponent,
     ProcessadoComponent,
     RegistroComponent,
+    EstoqueComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,6 +45,8 @@ import { RegistroComponent } from './shared/registro/registro.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     NgxViacepModule,
     ToastrModule.forRoot({  
       progressBar: true
@@ -55,6 +60,7 @@ import { RegistroComponent } from './shared/registro/registro.component';
       { path: 'Series', component: SeriesComponent, canActivate: [AuthGuard] },
       { path: 'Produto', component: ProdutoComponent, canActivate: [AuthGuard]  },
       { path: 'Checkout', component: CheckoutComponent, canActivate: [AuthGuard]  },
+      { path: 'Admin', component: EstoqueComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [UserService, {
