@@ -38,6 +38,8 @@ export class CheckoutComponent implements OnInit {
 
   DadosCompra = [this.nome, this.sobrenome, this.email, this.celular, this.observacoes];
 
+  nomeDVD: string;
+
   constructor(private viacep: NgxViacepService, private http: HttpClient, private rota: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -49,13 +51,14 @@ export class CheckoutComponent implements OnInit {
       this.preco = 100;
     }
     if (this.parametros["Nome"] == "A Cabana") {
-      this.preco = 3;
+      this.preco = 80;
     }
     if (this.parametros["Nome"] == "Fragmentado") {
       this.preco = 2;
     }
     this.qtd = this.parametros["Descricao"];
     this.valorTotal = this.preco * this.qtd;
+    this.nomeDVD = this.parametros["Nome"];
   }
 
   buscarCep(): void {
