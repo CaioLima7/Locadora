@@ -29,12 +29,12 @@ namespace Locadora.Controllers
             {
                 _produtoRepositorio.Adicionar(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex);
             }
             return Ok("Feito com sucesso");
         }
-         
+
     }
 }

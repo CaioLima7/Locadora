@@ -10,8 +10,9 @@ namespace Dominio.Entidades
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public decimal Preco { get; set; }
-
+        public float Preco { get; set; }
+        public int QtdEstoque { get; set; }
+        public byte Status { get; set; }
         public override void Validate()
         {
             throw new NotImplementedException();

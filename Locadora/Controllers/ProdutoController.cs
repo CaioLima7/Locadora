@@ -6,6 +6,7 @@ using Dominio.Contratos;
 using Dominio.Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Negocio;
 
 namespace Locadora.Controllers
 {
@@ -67,6 +68,24 @@ namespace Locadora.Controllers
             return Ok("Atualizado com sucesso");
         }
 
+        [HttpPost]
+        [Route("Alugar")]
+        public IActionResult Alugateste(ItemPedido model)
+        {
+            Adquerir adquerir = new Adquerir(_produtoRepositorio);
+
+            var teste2 = adquerir.Alugar(model);
+
+            try
+            {
+                //_produtoRepositorio.Atualizar(model);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            return Ok("Atualizado com sucesso");
+        }
 
     }
 }

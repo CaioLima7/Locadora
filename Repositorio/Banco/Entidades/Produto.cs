@@ -11,6 +11,7 @@ namespace Repositorio.Banco.Entidades
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public float Preco { get; set; }
+        public int QtdEstoque { get; set; }
 
         public override void Validate()
         {
