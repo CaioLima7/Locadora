@@ -24,4 +24,4 @@ OBS: Homologado apenas google chrome, pois deve ser configurado o cors junto com
     
     
 TODO: Configurar cors com token, fazer todos di, refatorar typescript, adicionar loadchildren para desacoplar, mais regras de negócio, 
-tela admintrativa, colocar conteúdo para tela "processado" que irá mostrar o número do pedido e enviar e-mail ao cliente.
+tela admintrativa, colocar conteúdo para tela "processado" que irá mostrar o número do pedido, enviar e-mail ao cliente e adicionar log.
