@@ -40,6 +40,8 @@ export class CheckoutComponent implements OnInit {
 
   nomeDVD: string;
 
+  produtoId: number;
+
   constructor(private viacep: NgxViacepService, private http: HttpClient, private rota: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -56,7 +58,7 @@ export class CheckoutComponent implements OnInit {
     if (this.parametros["Nome"] == "Fragmentado") {
       this.preco = 2;
     }
-    this.qtd = this.parametros["Descricao"];
+    this.qtd = this.parametros["Qtd"];
     this.valorTotal = this.preco * this.qtd;
     this.nomeDVD = this.parametros["Nome"];
   }
@@ -87,26 +89,29 @@ export class CheckoutComponent implements OnInit {
 
   //}
 
-
-
   EnviarCompra() {
     if (this.parametros["Nome"] == "Interestelar") {
       this.preco = 100;
+      this.produtoId = 1;
     }
     if (this.parametros["Nome"] == "A Cabana") {
       this.preco = 80;
+      this.produtoId = 2;
+
     }
     if (this.parametros["Nome"] == "Fragmentado") {
       this.preco = 2;
+      this.produtoId = 3;
     }
 
     var body = {
-      "ProdutoId": "1",
-      "Quantidade": this.parametros["Descricao"],
+      "ProdutoId": this.produtoId,
+      "Quantidade": this.parametros["Qtd"],
       "Total": this.valorTotal
     };
-    this.toastr.success("Compra salva no banco de dados");
-    return this.http.post('http://localhost:52849/api/Produto/Alugar', body).subscribe();
+    this.toastr.success("Filme alugaado com sucesso, seu item foi salvo na tabela: ItemPedidos")
+    return this.http.post('http://localhost:52849/api/Produto/Alugar', body)
+      .subscribe();
   }
 
 }

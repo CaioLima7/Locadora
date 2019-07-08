@@ -8,21 +8,24 @@ import { Route } from '@angular/compiler/src/core';
   styleUrls: ['./produto.component.css']
 })
 export class ProdutoComponent implements OnInit {
-
-  valor: number = 0;
+  valorTotal: number;
+  valor: number = 1;
 
   aumentar() {
     this.valor++
+    this.valorTotal = this.valorTotal + this.preco;
   }
   diminuir() {
     this.valor--
+    this.valorTotal = this.valorTotal - this.preco;
   }
 
   cartaz: number;
   parametros: string;
   nomeDVD: string;
   preco: number;
-
+  preco2: number;
+  
   constructor(private rota: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -46,11 +49,12 @@ export class ProdutoComponent implements OnInit {
       this.nomeDVD = "Fragmentado";
       this.preco = 2;
     }
+    this.valorTotal = 0 ;
   } 
 
   enviarQP() {
     //this.router.navigate(['/Checkout'], { queryParams: { 'Nome': 'interestelar', 'Descricao': this.valor } });
-    this.router.navigate(['/Checkout'], { queryParams: { 'Nome': this.parametros["Nome"] , 'Descricao': this.valor } });
+    this.router.navigate(['/Checkout'], { queryParams: { 'Nome': this.parametros["Nome"] , 'Qtd': this.valor } });
   }
 
 
