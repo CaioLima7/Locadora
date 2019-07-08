@@ -1,8 +1,8 @@
-﻿using Repositorio.Models;
+﻿using Dominio.Entidades;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repositorio.Banco.Configuracao;
-using Dominio.Entidades;
+using Repositorio.Models;
 
 namespace Repositorio.Banco
 {
@@ -25,6 +25,7 @@ namespace Repositorio.Banco
             modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
+            modelBuilder.ApplyConfiguration(new PedidoCOnfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

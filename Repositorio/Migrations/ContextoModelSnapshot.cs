@@ -79,11 +79,17 @@ namespace Repositorio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descricao");
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<float>("Preco");
+                    b.Property<decimal>("Preco")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
+                        .HasColumnType("Money");
 
                     b.Property<int>("QtdEstoque");
 
@@ -100,11 +106,17 @@ namespace Repositorio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("Senha");
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(400);
 
                     b.Property<string>("Sobrenome");
 
@@ -298,106 +310,6 @@ namespace Repositorio.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Repositorio.Banco.Entidades.ItemPedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("PedidoId");
-
-                    b.Property<int>("ProdutoId");
-
-                    b.Property<int>("Quantidade");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PedidoId");
-
-                    b.ToTable("ItemPedido");
-                });
-
-            modelBuilder.Entity("Repositorio.Banco.Entidades.Pedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CEP");
-
-                    b.Property<string>("Cidade");
-
-                    b.Property<DateTime>("DataPedido");
-
-                    b.Property<DateTime>("DataPrevisaoEntrega");
-
-                    b.Property<string>("Endereco");
-
-                    b.Property<string>("Estado");
-
-                    b.Property<int>("FormaPagamentoId");
-
-                    b.Property<int>("NumeroEndereco");
-
-                    b.Property<int>("UsuarioId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Pedido");
-                });
-
-            modelBuilder.Entity("Repositorio.Banco.Entidades.Produto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<decimal>("Preco")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 38, scale: 17)))
-                        .HasColumnType("Money");
-
-                    b.Property<int>("QtdEstoque");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("Repositorio.Banco.Entidades.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasMaxLength(400);
-
-                    b.Property<string>("Sobrenome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuario");
-                });
-
             modelBuilder.Entity("Repositorio.Models.AppUsuario", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -470,21 +382,6 @@ namespace Repositorio.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Repositorio.Banco.Entidades.ItemPedido", b =>
-                {
-                    b.HasOne("Repositorio.Banco.Entidades.Pedido")
-                        .WithMany("ItensPedido")
-                        .HasForeignKey("PedidoId");
-                });
-
-            modelBuilder.Entity("Repositorio.Banco.Entidades.Pedido", b =>
-                {
-                    b.HasOne("Repositorio.Banco.Entidades.Usuario", "Usuario")
-                        .WithMany("Pedidos")
-                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

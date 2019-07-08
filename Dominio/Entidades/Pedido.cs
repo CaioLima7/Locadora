@@ -31,8 +31,6 @@ namespace Dominio.Entidades
         /// </summary>
         public virtual ICollection<ItemPedido> ItensPedido { get; set; }
 
-
-
         public override void Validate()
         {
             LimparMensagensValidacao();

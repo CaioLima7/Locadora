@@ -1,9 +1,5 @@
 ﻿using Dominio.Contratos;
 using Dominio.Entidades;
-using Repositorio.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Negocio
 {

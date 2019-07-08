@@ -2,7 +2,7 @@
 using Dominio.Entidades;
 using Repositorio.Banco;
 
-namespace Repositorio.Repositorios
+namespace Repositorio.Banco.Repositorios
 {
     public class UsuarioRepositorio : BaseRepositorio<Usuario>, IUsuarioRepositorio
     {

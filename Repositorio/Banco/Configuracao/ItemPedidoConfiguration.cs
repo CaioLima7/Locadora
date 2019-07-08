@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Repositorio.Banco.Entidades;
 
 namespace Repositorio.Banco.Configuracao
 {

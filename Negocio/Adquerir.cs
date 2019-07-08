@@ -10,9 +10,8 @@ namespace Negocio
     public class Adquerir
     {
         private readonly IProdutoRepositorio _produtoRepositorio;
-        private readonly IItemPedidoRepositorio _itemPedidoRepositorio;
 
-        public Adquerir(IProdutoRepositorio produtoRepositorio)
+        public Adquerir(IProdutoRepositorio produtoRepositorio) 
         {
             _produtoRepositorio = produtoRepositorio;
         }
@@ -21,7 +20,7 @@ namespace Negocio
         {
             Produto produto = _produtoRepositorio.ObterPorId(model.ProdutoId);
 
-            int QtdEstoque = _produtoRepositorio.ObterTodos().Count();
+            int QtdEstoque = produto.QtdEstoque;
 
             if (model.Quantidade > QtdEstoque)
             {
@@ -31,30 +30,37 @@ namespace Negocio
             {
                 produto.Status = 0;
                 _produtoRepositorio.Atualizar(produto);
-                return "Sucesso";
+                return $"Sucesso, agora o produto não possui mais estoque";
             }
             else
             {
-                return "teste";
+                produto.QtdEstoque = QtdEstoque - model.Quantidade;
+                _produtoRepositorio.Atualizar(produto);
+                return $@"Sucesso, agora o produto possui essa quantia de estoque: 
+                        {produto.QtdEstoque}";
             }
         }
-        public string Comprar(ItemPedido model, ItemPedido teste)
+        public string Comprar(ItemPedido model)
         {
-            int QtdEstoque = _produtoRepositorio.ObterTodos().Count();
+            Produto produto = _produtoRepositorio.ObterPorId(model.ProdutoId);
+
+            int QtdEstoque = produto.QtdEstoque;
 
             if (model.Quantidade > QtdEstoque)
             {
                 return "Quantidade excede quantidade de estoque!";
             }
+            if (model.Quantidade == QtdEstoque)
+            {
+                produto.Status = 0;
+                _produtoRepositorio.Atualizar(produto);
+                return $"Sucesso, agora o produto não possui mais estoque";
+            }
             else
             {
-                var AlteracaoMinimaProduto = _produtoRepositorio.ObterPorId(model.Id);
-                AlteracaoMinimaProduto.QtdEstoque = QtdEstoque - model.Quantidade;
-                _produtoRepositorio.Atualizar(AlteracaoMinimaProduto);
-
-                _itemPedidoRepositorio.Adicionar(model);
-
-                return "Sucesso";
+                produto.QtdEstoque = QtdEstoque - model.Quantidade;
+                _produtoRepositorio.Atualizar(produto);
+                return $"Sucesso, agora o produto possui essa quantia de estoque: {produto.QtdEstoque}";
             }
         }
 

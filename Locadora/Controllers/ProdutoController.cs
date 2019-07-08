@@ -14,10 +14,12 @@ namespace Locadora.Controllers
     [ApiController]
     public class ProdutoController : ControllerBase
     {
+        private readonly IItemPedidoRepositorio _itemPedidoRepositorio;
         private readonly IProdutoRepositorio _produtoRepositorio;
 
-        public ProdutoController(IProdutoRepositorio produtoRepositorio)
+        public ProdutoController(IItemPedidoRepositorio itemPedidoRepositorio, IProdutoRepositorio produtoRepositorio)
         {
+            _itemPedidoRepositorio = itemPedidoRepositorio;
             _produtoRepositorio = produtoRepositorio;
         }
 
@@ -70,21 +72,40 @@ namespace Locadora.Controllers
 
         [HttpPost]
         [Route("Alugar")]
-        public IActionResult Alugateste(ItemPedido model)
+        public IActionResult Alugar(ItemPedido model)
         {
             Adquerir adquerir = new Adquerir(_produtoRepositorio);
 
-            var teste2 = adquerir.Alugar(model);
+            var VerificarRegra = adquerir.Alugar(model);
 
             try
             {
-                //_produtoRepositorio.Atualizar(model);
+                _itemPedidoRepositorio.Adicionar(model);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex);
             }
-            return Ok("Atualizado com sucesso");
+            return Ok($"{VerificarRegra}");
+        }
+
+        [HttpPost]
+        [Route("ComprarDVD")]
+        public IActionResult Comprar(ItemPedido model)
+        {
+            Adquerir adquerir = new Adquerir(_produtoRepositorio);
+
+            var VerificarRegra = adquerir.Comprar(model);
+
+            try
+            {
+                _itemPedidoRepositorio.Adicionar(model);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            return Ok(VerificarRegra);
         }
 
     }

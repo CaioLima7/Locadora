@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repositorio.Migrations
 {
-    public partial class Repo : Migration
+    public partial class AdicaoColunas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,20 @@ namespace Repositorio.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FormaPagamento",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FormaPagamento", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Produtos",
                 columns: table => new
                 {
@@ -57,7 +71,9 @@ namespace Repositorio.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 200, nullable: false),
-                    Preco = table.Column<decimal>(type: "Money", nullable: false)
+                    Preco = table.Column<decimal>(type: "Money", nullable: false),
+                    QtdEstoque = table.Column<int>(nullable: false),
+                    Status = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -206,6 +222,12 @@ namespace Repositorio.Migrations
                 {
                     table.PrimaryKey("PK_Pedidos", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Pedidos_FormaPagamento_FormaPagamentoId",
+                        column: x => x.FormaPagamentoId,
+                        principalTable: "FormaPagamento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Pedidos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
@@ -221,6 +243,7 @@ namespace Repositorio.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProdutoId = table.Column<int>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
+                    Total = table.Column<float>(nullable: false),
                     PedidoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -279,6 +302,11 @@ namespace Repositorio.Migrations
                 column: "PedidoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Pedidos_FormaPagamentoId",
+                table: "Pedidos",
+                column: "FormaPagamentoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pedidos_UsuarioId",
                 table: "Pedidos",
                 column: "UsuarioId");
@@ -315,6 +343,9 @@ namespace Repositorio.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pedidos");
+
+            migrationBuilder.DropTable(
+                name: "FormaPagamento");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

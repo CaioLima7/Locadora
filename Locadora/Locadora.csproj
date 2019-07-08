@@ -22,14 +22,17 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Operacao\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Operacao\**" />
+    <EmbeddedResource Remove="Operacao\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Operacao\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\shared\autentificacao\" />
-    <Folder Include="Operacao\" />
   </ItemGroup>
 
   <ItemGroup>

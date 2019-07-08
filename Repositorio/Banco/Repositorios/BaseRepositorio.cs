@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Dominio.Contratos;
+﻿using Dominio.Contratos;
 using Repositorio.Banco;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Repositorio.Repositorios
+
+namespace Repositorio.Banco.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {

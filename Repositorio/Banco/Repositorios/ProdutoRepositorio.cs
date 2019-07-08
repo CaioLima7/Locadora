@@ -2,7 +2,7 @@
 using Dominio.Entidades;
 using Repositorio.Banco;
 
-namespace Repositorio.Repositorios
+namespace Repositorio.Banco.Repositorios
 {
     public class ProdutoRepositorio : BaseRepositorio<Produto>, IProdutoRepositorio
     {

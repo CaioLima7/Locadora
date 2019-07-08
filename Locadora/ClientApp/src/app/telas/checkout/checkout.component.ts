@@ -94,19 +94,19 @@ export class CheckoutComponent implements OnInit {
       this.preco = 100;
     }
     if (this.parametros["Nome"] == "A Cabana") {
-      this.preco = 3;
+      this.preco = 80;
     }
     if (this.parametros["Nome"] == "Fragmentado") {
       this.preco = 2;
     }
 
     var body = {
-      "Nome": this.parametros["Nome"],
-      "Descricao": this.parametros["Descricao"],
-      "Preco": this.preco
+      "ProdutoId": "1",
+      "Quantidade": this.parametros["Descricao"],
+      "Total": this.valorTotal
     };
     this.toastr.success("Compra salva no banco de dados");
-    return this.http.post('http://localhost:52849/api/ObterCompra', body).subscribe();
+    return this.http.post('http://localhost:52849/api/Produto/Alugar', body).subscribe();
   }
 
 }
