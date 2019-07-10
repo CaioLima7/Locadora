@@ -20,7 +20,7 @@
       <div class="mb-5">
         <div class="input-group mb-3" style="max-width: 220px;">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-primary js-btn-minus" type="button" (click)="diminuir()">−</button>
+            <button class="btn btn-outline-primary js-btn-minus" type="button" (click)="diminuir()" [disabled]="valorNegativo">−</button>
           </div>
           <input disabled type="text" class="form-control text-center" [value]="valor" placeholder="Quantidade" aria-describedby="button-addon1">
           <div class="input-group-append">

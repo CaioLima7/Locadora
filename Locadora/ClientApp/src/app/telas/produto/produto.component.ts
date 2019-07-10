@@ -10,14 +10,27 @@ import { Route } from '@angular/compiler/src/core';
 export class ProdutoComponent implements OnInit {
   valorTotal: number;
   valor: number = 1;
+  valorNegativo: boolean;
 
   aumentar() {
     this.valor++
     this.valorTotal = this.valorTotal + this.preco;
+    if (this.valor <= 1) {
+      this.valor = 1
+      this.valorNegativo = true;
+    }
+    else 
+      this.valorNegativo = false;
   }
   diminuir() {
     this.valor--
     this.valorTotal = this.valorTotal - this.preco;
+    if (this.valor <= 1) {
+      this.valor = 1
+      this.valorNegativo = true;
+  }
+    else
+      this.valorNegativo = false;
   }
 
   cartaz: number;
@@ -49,7 +62,7 @@ export class ProdutoComponent implements OnInit {
       this.nomeDVD = "Fragmentado";
       this.preco = 2;
     }
-    this.valorTotal = 0 ;
+    this.valorTotal = this.preco ;
   } 
 
   enviarQP() {
